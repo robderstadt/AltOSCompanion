@@ -12,5 +12,23 @@ An Arduino library for the companion board interface available on <a href="http:
 
 3. Hook up your Arduino as a SPI slave to the flight computer using the companion port. You can look at the <a href="http://altusmetrum.org/TeleMetrum/v2.0/telemetrum-sch.pdf">schematic for your flight computer</a> to see how the companion port pins are setup. Basically, you just need to attach the  MOSI2, MISO2, SCK2 and SC_COMPANION0 lines to the Arduino's pins 11, 12, 13 and 10. If your Arduino runs at 5v you'll need to run all of these connections through a <a href="https://www.sparkfun.com/products/12009">logic level converter</a>.
 
-4. Setup your Arduino to collect data from a sensor (the example code uses the Adafruit 10DOF IMU)
+4. Add the AltOSCompanion library to your Arduino project. Setup your Arduino to collect data from a sensor (the example code uses the <a hred="https://www.adafruit.com/product/1604">Adafruit 10DOF IMU</a>) or whatever data source you'd like to use. In your setup routine, configure your Arduino as a companion board:
+  
+  AltOSCompanion::configure(companion_id, fetch_rate, num_channels);
+
+The companion id can be any unsigned integer value you'd like to use to identify your board. For some reason only the later byte is displayed in AltOS. 
+
+The fetch rate determines how frequently you'd like the flight computer to request data from your Arduino. This value is the minimum number of 100Hz clock ticks that occur between requests. The flight computer will wait <i>at least</i> this long before requesting more data from your Arduino. On my TeleMetrum, setting this to 1 resulted in a fetch request from the flight computer every 18.53ms (52.72Hz). Keep in mind that telemetry from the flight computer is only sent every second while the rocket is on the pad and every 10ms while in flight. 
+
+Finally, the number of channels should be specified. Each channel is two bytes (displayed as an unsigned int through AltOS). There is a maximum of 16 channels. You'll need to consider how you want to encode your data, i.e. sending floats cannot be done w/o some kind of conversion on each side of the link. In the example code, the IMU values are floats that are normalized, multiplied by 1000 and sent as unsigned ints (and need to be decoded as such).
+
+In order to actually set data, call:
+
+  AltOSCompanion::updateChannel(channel, value);
+
+The channel is the zero-based channel number (i.e. 0 for channel 1, 1 for channel 2, etc). The value is whatever two bytes you'd like sent over the link. The library currently ignores this call when the flight computer is actively fetching companion data.
+
+5. Fire up AltosUI, start your Arduino, then start your flight computer (in pad mode). Once a link is established you should see a "companion" tab show up in AltosUI displaying data from your companion board.
+
+
 
