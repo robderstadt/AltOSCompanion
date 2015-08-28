@@ -2,7 +2,7 @@
 An Arduino library for the companion board interface available on <a href="http://altusmetrum.org">AltusMetrum</a> flight computers.
 
 ## What is the AltOSCompanion Library? ##
-<a href="http://altusmetrum.org">AltusMetrum</a> flight computers like the <a href="http://altusmetrum.org/TeleMetrum/">TeleMetrum</a> have a companion interface that can be used to feed auxilary data to the ground station over the RF link. This data is captured and displayed by <a href="http://altusmetrum.org/AltOS/">AltOS</a> UI. This library allows you to use an Arduino as a companion board that communicates with the flight computer over that interface. This means you can use your Arduino to capture sensor readings (like adding an IMU to display roll/pitch/yaw; see example) and have that information transmitted to the ground station before, during and after launch. 
+<a href="http://altusmetrum.org">AltusMetrum</a> flight computers like the <a href="http://altusmetrum.org/TeleMetrum/">TeleMetrum</a> have a companion interface that can be used to feed auxilary data to the ground station over the RF link. This data is captured and displayed by <a href="http://altusmetrum.org/AltOS/">AltOS</a> UI. This library allows you to use an Arduino as a companion board that communicates with the flight computer over that interface. This means you can use your Arduino to capture sensor readings (like adding an IMU to display roll/pitch/yaw; see example) and have that information transmitted to the ground station before, during and after launch. <p/>
 
 
 <img src="https://github.com/robderstadt/AltOSCompanion/blob/master/images/TeleMetrum_ArduinoCompanion.JPG"/>
