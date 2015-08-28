@@ -15,7 +15,7 @@ An Arduino library for the companion board interface available on <a href="http:
 
 3. Hook up your Arduino as a SPI slave to the flight computer using the companion port. You can look at the <a href="http://altusmetrum.org/TeleMetrum/v2.0/telemetrum-sch.pdf">schematic for your flight computer</a> to see how the companion port pins are setup. Basically, you just need to attach the  MOSI2, MISO2, SCK2 and SC_COMPANION0 lines to the Arduino's pins 11, 12, 13 and 10. If your Arduino runs at 5v you'll need to run all of these connections through a <a href="https://www.sparkfun.com/products/12009">logic level converter</a>.
 
-4. Add the AltOSCompanion library to your Arduino project. Setup your Arduino to collect data from a sensor (the example code uses the <a hred="https://www.adafruit.com/product/1604">Adafruit 10DOF IMU</a>) or whatever data source you'd like to use. In your setup routine, configure your Arduino as a companion board:
+4. Add the AltOSCompanion library to your Arduino project. Setup your Arduino to collect data from a sensor (the example code uses the <a href="https://www.adafruit.com/product/1604">Adafruit 10DOF IMU</a>) or whatever data source you'd like to use. In your setup routine, configure your Arduino as a companion board:
   
   `AltOSCompanion::configure(companion_id, fetch_rate, num_channels);`
 
