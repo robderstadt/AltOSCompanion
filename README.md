@@ -23,7 +23,7 @@ An Arduino library for the companion board interface available on <a href="http:
 
   The fetch rate determines how frequently you'd like the flight computer to request data from your Arduino. This      value is the minimum number of 100Hz clock ticks that occur between requests. The flight computer will wait <i>at    least</i> this long before requesting more data from your Arduino. On my TeleMetrum, setting this to 1 resulted in   a fetch request from the flight computer every 18.53ms (52.72Hz). Keep in mind that telemetry from the flight        computer is only sent every second while the rocket is on the pad and every 10ms while in flight. 
 
-  Finally, the number of channels should be specified. Each channel is two bytes (displayed as an unsigned int         through AltOS). There is a maximum of 16 channels. You'll need to consider how you want to encode your data, i.e.    sending floats cannot be done w/o some kind of conversion on each side of the link. In the example code, the IMU     values are floats that are normalized, multiplied by 1000 and sent as unsigned ints (and need to be decoded as       such).
+  Finally, the number of channels should be specified. Each channel is two bytes (displayed as an unsigned int         through AltOS). There is a maximum of 16 channels. You'll need to consider how you want to encode your data, i.e.    sending floats cannot be done w/o some kind of conversion on each side of the link.
 
   In order to actually set data, call:
 
@@ -35,6 +35,6 @@ An Arduino library for the companion board interface available on <a href="http:
 
 <img src="https://github.com/robderstadt/AltOSCompanion/blob/master/images/AltosUI_Companion.png"/>
 
-
+Most likely you'd also want to record your data on-board as well. You can use `AltOSCompanion::lastTick();` to help match the recorded data to the flight data captured on-board the flight computer. 
 
 
