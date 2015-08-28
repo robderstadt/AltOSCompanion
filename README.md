@@ -4,8 +4,7 @@ An Arduino library for the companion board interface available on <a href="http:
 ## What is the AltOSCompanion Library? ##
 <a href="http://altusmetrum.org">AltusMetrum</a> flight computers like the <a href="http://altusmetrum.org/TeleMetrum/">TeleMetrum</a> have a companion interface that can be used to feed auxilary data to the ground station over the RF link. This data is captured and displayed by AltOS. This library allows you to use an Arduino as a companion board that communicates with the flight computer over that interface. This means you can use your Arduino to capture sensor readings (like adding an IMU to display roll/pitch/yaw; see example) and have that information transmitted to the ground station before, during and after launch. 
 
-<img src="https://github.com/robderstadt/AltOSCompanion/blob/master/images/AltosUI_Companion.png"/>
-<p>
+
 <img src="https://github.com/robderstadt/AltOSCompanion/blob/master/images/TeleMetrum_ArduinoCompanion.JPG"/>
 
 ## How do I use it? ##
@@ -32,7 +31,10 @@ An Arduino library for the companion board interface available on <a href="http:
 
   The channel is the zero-based channel number (i.e. 0 for channel 1, 1 for channel 2, etc). The value is whatever     two bytes you'd like sent over the link. The library currently ignores this call when the flight computer is         actively fetching companion data.
 
-5. Fire up AltosUI, start your Arduino, then start your flight computer (in pad mode). Once a link is established you should see a "companion" tab show up in AltosUI displaying data from your companion board.
+5. Fire up AltosUI, start your Arduino, then start your flight computer (in pad mode). Once a link is established you should see a "companion" tab show up in AltosUI displaying data from your companion board, similar to this:
+
+<img src="https://github.com/robderstadt/AltOSCompanion/blob/master/images/AltosUI_Companion.png"/>
+
 
 
 
