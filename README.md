@@ -37,4 +37,6 @@ An Arduino library for the companion board interface available on <a href="http:
 
 Most likely you'd also want to record your data on-board as well. You can use `AltOSCompanion::lastTick();` to help match the recorded data to the flight data captured on-board the flight computer. 
 
+## Caveat Emptor ##
 
+Use this information and library at your own risk! I cannot be held liable or responsible for how you use this information. Be aware that you could ruin your flight computer, cause a flight computer malfunction during flight, or worse. 
